@@ -89,7 +89,7 @@ def findcontacts():
 
 # Основная программа
 print ('\nДОБРО ПОЖАЛОВАТЬ В ТЕЛЕФОННЫЙ СПРАВОЧНИК')
-conn = sqlite3.connect('my.db')  
+conn = sqlite3.connect('phonebase.db')  
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS phonebook (
                 id integer PRIMARY KEY,
@@ -120,4 +120,4 @@ while m != 0:
         conn.close()
         sys.exit(0)  
     else:  
-        print('Please follow instructions')
+        print('Пожалуйста, сделайте свой выбор от 1 до 5')
