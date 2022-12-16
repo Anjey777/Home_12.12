@@ -4,7 +4,7 @@ import sqlite3
 def print_menu():  
     print ('\nПожалуйста выберете действие:')  
     print('1. Добавить контакт')  
-    print('2. Показать контакт')  
+    print('2. Показать все контакты')  
     print('3. Редактировать контакт')  
     print('4. Удалить контакт')
     print('5. Найти контакт')
@@ -36,7 +36,7 @@ def addcontact():
     cursor.execute('''INSERT INTO phonebook (name, surname, phone_number) VALUES (?,?,?)''',
                                                                          (name, surname, num))  
     conn.commit()      
-    print("Новый контакт " + surname + ' ' + name + " добавлено в таблицу телефонной книги")
+    print("Новый контакт " + surname + ' ' + name + " добавлен в таблицу телефонной книги")
 
 def displaybook():
     cursor.execute("SELECT surname, name, phone_number FROM phonebook ORDER BY surname")
@@ -88,7 +88,7 @@ def findcontacts():
         print(results)
 
 # Основная программа
-print ('\nWELCOME TO THE PHONE DIRECTORY')
+print ('\nДОБРО ПОЖАЛОВАТЬ В ТЕЛЕФОННЫЙ СПРАВОЧНИК')
 conn = sqlite3.connect('my.db')  
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS phonebook (
@@ -116,7 +116,7 @@ while m != 0:
         findcontacts()
         continue
     elif m == 0:  
-        print('The program is completed.\n')
+        print('Вы завершили работу со справочником.\n')
         conn.close()
         sys.exit(0)  
     else:  
