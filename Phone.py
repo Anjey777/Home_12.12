@@ -44,7 +44,7 @@ def displaybook():
     print(results)
 
 def key_pair_reception(str):
-    print ("\nПожалуйста сделайте выбор " + str + " (от 1 до 3)")  
+    print ("\nПожалуйста выбирете тип " + str + " (от 1 до 3)")  
     print('1. Имя')  
     print('2. Фамилия')  
     print('3. Телефонный номер')  
@@ -58,12 +58,12 @@ def key_pair_reception(str):
         field = "phone_number"
     else:
         return None
-    keyword = input("\nPlease enter the key value: " + field + " = ")
+    keyword = input("\nВведите ключевое слово: " + field + " = ")
     keypair = field + "='" + keyword + "'"
     return keypair
 
 def editcontacts():
-    s = key_pair_reception('searching')
+    s = key_pair_reception('поиска')
     u = key_pair_reception('updating')
     if s != None:
         sql = "UPDATE phonebook SET " + u + " WHERE " + s
