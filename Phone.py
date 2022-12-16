@@ -2,41 +2,41 @@ import sys
 import sqlite3  
 
 def print_menu():  
-    print ('\nPlease select from the following items:')  
-    print('1. Add new contact')  
-    print('2. Display contacts')  
-    print('3. Edit contacts')  
-    print('4. Delete contacts')
-    print('5. Find contacts')
-    print('0. Exit the program')
+    print ('\nПожалуйста выберете действие:')  
+    print('1. Добавить контакт')  
+    print('2. Показать контакт')  
+    print('3. Редактировать контакт')  
+    print('4. Удалить контакт')
+    print('5. Найти контакт')
+    print('0. Выйти из справочника')
 
 def addcontact():
     while True:  
-        name = input("What is the person's first name?: ") 
+        name = input("Как фамилия человека?: ") 
         if len(name) != 0:  
             break  
         else:  
-            print("Please enter the contact's name")     
+            print("Пожалуйста, введите имя контакта")     
     while True:  
-        surname = input("What is the person's surname name?: ")  
+        surname = input("Как имя человека: ")  
         if len(surname) != 0:  
             break  
         else:  
-            print("Please enter the surname")    
+            print("Пожалуйста, введите фамилию")    
     while True:  
-        num = input("What is the person's phone number? (only digits allowed): ")  
+        num = input("Какой номер телефона у человека? (допускаются только цифры): ")  
         if not num.isdigit():  
-            print("Please enter only digits")  
+            print("Пожалуйста, вводите только цифры")  
             continue  
         elif len(num) != 10:  
-            print("Please enter 10-digits phone number with no comma, no spaces, no punctuation")  
+            print("Введите 10-значный номер телефона без запятых, пробелов и знаков препинания.")  
             continue  
         else:  
             break  
     cursor.execute('''INSERT INTO phonebook (name, surname, phone_number) VALUES (?,?,?)''',
                                                                          (name, surname, num))  
     conn.commit()      
-    print("New contact " + surname + ' ' + name + " was added to the phonebook table")
+    print("Новый контакт " + surname + ' ' + name + " добавлено в таблицу телефонной книги")
 
 def displaybook():
     cursor.execute("SELECT surname, name, phone_number FROM phonebook ORDER BY surname")
@@ -44,12 +44,12 @@ def displaybook():
     print(results)
 
 def key_pair_reception(str):
-    print ("\nPlease select the key field for " + str + " (from 1 to 3)")  
-    print('1. Name')  
-    print('2. Surname')  
-    print('3. Phone_number')  
-    print('0. Return to the Main menu')
-    n = int(input('Your choice: '))
+    print ("\nПожалуйста сделайте выбор " + str + " (от 1 до 3)")  
+    print('1. Имя')  
+    print('2. Фамилия')  
+    print('3. Телефонный номер')  
+    print('0. Возврат в меню')
+    n = int(input('Ваш выбор: '))
     if n == 1:  
         field = "name"
     elif n == 2:  
@@ -99,7 +99,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS phonebook (
 m = -1  
 while m != 0:
     print_menu()  
-    m = int(input('Your choice: '))  
+    m = int(input('Ваш выбор: '))  
     if m == 1:  
         addcontact()
         continue
